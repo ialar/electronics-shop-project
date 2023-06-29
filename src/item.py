@@ -1,5 +1,7 @@
 import csv
 
+from src.config import CSV_PATH
+
 
 class Item:
     """Класс для представления товара в магазине."""
@@ -29,7 +31,7 @@ class Item:
         self.__name = new_name[:10]
 
     @classmethod
-    def instantiate_from_csv(cls, csv_path='../src/items.csv'):
+    def instantiate_from_csv(cls, csv_path=CSV_PATH):
         """Инициализирует экземпляры класса Item данными из CSV-файла."""
         with open(csv_path, 'r', encoding='windows-1251') as file:
             reader = csv.DictReader(file)
