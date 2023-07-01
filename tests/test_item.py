@@ -16,8 +16,8 @@ def test_apply_discount():
 
 
 def test_name(new_name):
-    new_name.name = 'Холодильник'
-    assert new_name.name == 'Холодильни'
+    new_name.name = 'СуперСмартфон'
+    assert new_name.name == 'СуперСмарт'
 
 
 def test_instantiate_from_csv():
@@ -29,3 +29,11 @@ def test_instantiate_from_csv():
 def test_string_to_number():
     assert Item.string_to_number('1') == 1
     assert Item.string_to_number('13.5') == 13
+
+
+def test_repr():
+    assert repr(item) == "Item('Smartphone', 7499.5, 13)"
+
+
+def test_str():
+    assert str(item) == 'Smartphone'
