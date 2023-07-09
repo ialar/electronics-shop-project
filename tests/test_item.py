@@ -1,6 +1,8 @@
+import pytest
+
 from src.item import Item
 
-item = Item("Smartphone", 14999, 13)
+item = Item('Smartphone', 14999, 13)
 
 
 def test_calculate_total_price():
@@ -31,9 +33,22 @@ def test_string_to_number():
     assert Item.string_to_number('13.5') == 13
 
 
-def test_repr():
+def test_repr(item1):
     assert repr(item) == "Item('Smartphone', 7499.5, 13)"
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
 
 
-def test_str():
+def test_str(item1):
     assert str(item) == 'Smartphone'
+    assert str(item1) == 'Смартфон'
+
+
+# noinspection PyStatementEffect
+def test_add(item1, phone1):
+    assert item1 + phone1 == 27
+    assert phone1 + item1 == 27
+    assert item1 + item1 == 40
+    assert phone1 + phone1 == 14
+
+    with pytest.raises(TypeError):
+        item1 + 'alien object'
