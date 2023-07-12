@@ -10,7 +10,7 @@ class Item:
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
-        Создает экземпляр класса Item.
+        Инициализирует экземпляр класса Item.
         :param name: Название товара.
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
@@ -25,11 +25,11 @@ class Item:
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
     def __str__(self):
-        """Возвращает название экземпляра для пользователя."""
+        """Строковое представление объекта для пользователя (название товара)."""
         return f'{self.__name}'
 
     def __add__(self, other) -> int:
-        """Возвращает результат сложения (по количеству товара в магазине)"""
+        """Возвращает результат сложения (по количеству товара в магазине)."""
         if issubclass(other.__class__, self.__class__):
             return self.quantity + other.quantity
         raise TypeError('Складывать можно только объекты Item и дочерние от них.')

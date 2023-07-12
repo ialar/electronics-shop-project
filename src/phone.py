@@ -7,12 +7,12 @@ class Phone(Item):
 
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int):
         """
-            Создает экземпляр класса Phone.
-            :param name: Название телефона.
-            :param price: Цена телефона.
-            :param quantity: Количество телефонов в магазине.
-            :param number_of_sim: Количество поддерживаемых SIM-карт.
-            """
+        Инициализирует экземпляр класса Phone.
+        :param name: Название телефона.
+        :param price: Цена телефона.
+        :param quantity: Количество телефонов в магазине.
+        :param number_of_sim: Количество поддерживаемых SIM-карт.
+        """
         super().__init__(name, price, quantity)
         self.__number_of_sim = number_of_sim
 
