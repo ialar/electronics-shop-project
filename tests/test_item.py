@@ -1,5 +1,7 @@
 import pytest
 
+from src.config import CSV_PATH_2, CSV_PATH_3
+from src.instantiate_csv_error import InstantiateCSVError
 from src.item import Item
 
 item = Item('Smartphone', 14999, 13)
@@ -20,12 +22,6 @@ def test_apply_discount():
 def test_name(new_name):
     new_name.name = 'СуперСмартфон'
     assert new_name.name == 'СуперСмарт'
-
-
-def test_instantiate_from_csv():
-    Item.all = []
-    Item.instantiate_from_csv()
-    assert len(Item.all) == 5
 
 
 def test_string_to_number():
@@ -52,3 +48,13 @@ def test_add(item1, phone1):
 
     with pytest.raises(TypeError):
         item1 + 'alien object'
+
+
+def test_instantiate_from_csv_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv(CSV_PATH_2)
+
+
+def test_instantiate_from_csv_file_corrupted():
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv(CSV_PATH_3)
